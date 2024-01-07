@@ -20,21 +20,11 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $document->titre }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ $document->description }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                        <a href="{{ route('download', ['id' => $document->id]) }}" class="btn btn-primary">
-                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Download</button>
+                        <a href="{{ route('delete_file', ['id' => $document->id]) }}" class="btn btn-primary">
+                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">delete</button>
                         </a>
                     </td>
-                  @if (Auth::user())
-                    @if (Auth::user()->roles->where('id', 2)->count())
-                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  
-                      <a href="{{ route('delete_admin', ['id' => $document->id]) }}" class="btn btn-primary">
-                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">delete</button>
-                    </a>
-                  </td>
-                    @endif
                 </tr>
-                @endif
                 @empty
                     <tr>
                         <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">No files found</td>
@@ -46,4 +36,5 @@
       </div>
     </div>
   </div>
+  
 @endsection

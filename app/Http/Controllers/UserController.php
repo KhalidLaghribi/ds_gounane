@@ -73,7 +73,7 @@ class UserController extends Controller
         return back();
     }
     try {
-        $user->roles()->sync(2);
+        $user->roles()->sync([2]);
         return back()->with('success', 'User successfully made an admin.');
     } catch (ModelNotFoundException $e) {
         // Handle case where the admin role doesn't exist
